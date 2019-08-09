@@ -39,17 +39,19 @@ def get_stat(url):
     for x in range(num_countries):
         countries.append(country_names[x].text.strip()[3:])
         countries_percentage.append(country_ranks[x].text.strip())
-        country_one_rank = each_rank[x].text.strip().split('#')[1]
+        countries_rank = each_rank[x].text.strip().split('#')[1]
     
     print(len(countries), len(countries_percentage), len(countries_rank) )
     # for x in range(num_countries):
     #     print(countries[x], ' : ' ,countries_percentage[x], ' : ', countries_rank[x])
 
+    print("raw site metrics:", site_metrics)
 
     three_site_metrics = site_metrics.find_all('div', attrs={'class': 'small data'})
     print("three site metrics:", three_site_metrics)
 
-    sites_linking_in = soup.find_all('div', attrs={'class': 'enun'})
+    raw_sites_linking_in = soup.find_all('div', attrs={'class': 'enun'})
+    sites_linkning_in = raw_sites_linking_in.find('div', attrs={'class':'big data'})
     print("sites linkning in:", sites_linking_in)
 
     # ret = []
@@ -66,7 +68,7 @@ def get_stat(url):
     # ret.append(country_three_percent)
     # ret.append(country_three_rank)
 
-    return ret
+    #return ret
 
 
 def main():
